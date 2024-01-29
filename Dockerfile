@@ -1,4 +1,10 @@
-FROM andyshinn/dnsmasq:2.75
+ARG alpine_tag
+
+FROM alpine:${alpine_tag}
+
+ARG dnsmasq_version
+RUN apk --no-cache add dnsmasq-dnssec=${dnsmasq_version}
+EXPOSE 53 53/udp
 
 COPY dnsmasq.conf /etc/dnsmasq.conf
 COPY start-with-domain-ip.sh /usr/local/bin

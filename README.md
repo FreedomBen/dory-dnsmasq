@@ -4,7 +4,7 @@
 
 [Dory](https://github.com/FreedomBen/dory) uses this container to provide the dnsmasq
 services in conjunction with an nginx-proxy.  It's a very lightweight container built
-on Alpine Linux (based off of [andyshinn/dnsmasq](https://hub.docker.com/r/andyshinn/dnsmasq/).
+on Alpine Linux, using only the dnsmasq-dnssec package.
 See the [dory](https://github.com/FreedomBen/dory) project page for more info.
 
 ## How do I use it?
@@ -62,3 +62,28 @@ docker run -p 53:53/tcp -p 53:53/udp --cap-add=NET_ADMIN freedomben/dory-dnsmasq
 ```
 
 *NOTE:  You have to put the # in quotes otherwise bash will think it's a comment character*
+
+### Build and push images
+
+Create the builder:
+
+```bash
+make builder
+```
+
+Build and push images:
+
+```bash
+make build push
+```
+
+Remove the builder:
+
+```bash
+make remove
+```
+
+### Credit
+
+- A lightweight docker image for dnsmasq [andyshinn/dnsmasq](https://hub.docker.com/r/andyshinn/dnsmasq/).
+- A PR to add compatibility for Mac M-series chips [tripox/dory-dnsmasq](https://github.com/tripox/dory-dnsmasq/commit/72549c39324014c5092cb8103378d58fbf51df80).
